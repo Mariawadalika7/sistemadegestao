@@ -147,24 +147,6 @@
                     Dashboard
                 </a>
 
-                <div class="nav-heading">GESTÃO</div>
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <i class="fas fa-bolt me-3"></i>
-                    Consumo
-                </a>
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <i class="fas fa-tools me-3"></i>
-                    Manutenções
-                </a>
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <i class="fas fa-exclamation-triangle me-3"></i>
-                    Ocorrências
-                </a>
-                <a href="#" class="nav-link d-flex align-items-center">
-                    <i class="fas fa-users me-3"></i>
-                    Equipes
-                </a>
-
                 <div class="nav-heading">CLIENTES</div>
                 <a href="#cadastro-clientes" class="nav-link d-flex align-items-center">
                     <i class="fas fa-user-tie me-3"></i>
