@@ -152,6 +152,8 @@
                     <i class="fas fa-user-tie me-3"></i>
                     Cadastro de Clientes
                 </a>
+             
+
                 <a href="#" class="nav-link d-flex align-items-center">
                     <i class="fas fa-file-invoice me-3"></i>
                     Faturas
