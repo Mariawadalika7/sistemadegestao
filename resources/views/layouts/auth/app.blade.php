@@ -1,21 +1,20 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sign In / Sign Up</title>
-  @assets
-  @endassets
-  <livewire:styles />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title')</title>    
+    @assets
+    <link rel="stylesheet" href='{{ asset('auth/css/styles.css') }}' />
+    <link rel="stylesheet" href='{{ asset('auth/css/sign_up.css') }}' />
+    @endassets
+    <livewire:styles />  
 </head>
 <body>
-    <div>
-            {{ $slot }}  
-            <livewire:scripts />      
-    </div>
-    @script
-    @endscript
+  
+    {{ $slot }}  
+    <livewire:scripts />   
+    <script src='{{ asset('global/js/sweetalert.js') }}'></script>        
 </body>
 </html>
-
-

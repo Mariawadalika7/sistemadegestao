@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -37,14 +37,15 @@
                         <h2 class="text-lg font-semibold text-white">Painel de Controle</h2>
                     </div>
                     <nav class="mt-4">
+
                         @if(Auth::user()->role === 'admin')
-                            <a href="{{ route('dashboard') }}" class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                            <a href="" class="sidebar-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                                 <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
                             </a>
-                            <a href="{{ route('users.index') }}" class="sidebar-item {{ request()->routeIs('users.*') || request()->routeIs('user.*') ? 'active' : '' }}">
+                            <a href="" class="sidebar-item {{ request()->routeIs('users.*') || request()->routeIs('user.*') ? 'active' : '' }}">
                                 <i class="fas fa-users mr-2"></i> Usuários
                             </a>
-                            <a href="{{ route('clientes.index') }}" class="sidebar-item {{ request()->routeIs('clientes.*') ? 'active' : '' }}">
+                            <a href="" class="sidebar-item {{ request()->routeIs('clientes.*') ? 'active' : '' }}">
                                 <i class="fas fa-user-tie mr-2"></i> Clientes
                             </a>
                             <a href="#" class="sidebar-item">
@@ -54,10 +55,10 @@
                                 <i class="fas fa-cog mr-2"></i> Configurações
                             </a>
                         @elseif(Auth::user()->role === 'funcionario')
-                            <a href="{{ route('funcionario') }}" class="sidebar-item {{ request()->routeIs('funcionario') ? 'active' : '' }}">
+                            <a href="" class="sidebar-item {{ request()->routeIs('funcionario') ? 'active' : '' }}">
                                 <i class="fas fa-home mr-2"></i> Painel Funcionário
                             </a>
-                            <a href="{{ route('clientes.index') }}" class="sidebar-item {{ request()->routeIs('clientes.*') ? 'active' : '' }}">
+                            <a href="" class="sidebar-item {{ request()->routeIs('clientes.*') ? 'active' : '' }}">
                                 <i class="fas fa-user-tie mr-2"></i> Clientes
                             </a>
                             <a href="#" class="sidebar-item">
@@ -79,7 +80,8 @@
                                 <i class="fas fa-chart-pie mr-2"></i> Relatórios Financeiros
                             </a>
                         @endif
-                        <a href="{{ route('profile.edit') }}" class="sidebar-item {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+
+                        <a href="#" class="sidebar-item {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
                             <i class="fas fa-user-circle mr-2"></i> Meu Perfil
                         </a>
                     </nav>

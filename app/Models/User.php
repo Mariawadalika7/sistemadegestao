@@ -13,6 +13,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $table = 'users';
+    protected $primaryKey = 'id'; 
 
     protected $fillable = [
         'username',
@@ -24,27 +25,23 @@ class User extends Authenticatable
         'customer_uuid'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+
     protected $hidden = [
         'password',
         'remember_token',
     ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
+   
     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+  
+
+    public function role() {
+        return $this->belongsTo(Role::class, 'role_uuid', 'uuid');
     }
 
     /**
@@ -56,14 +53,5 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
-
-    /**
-     * Verifica se o usuário é um funcionário
-     *
-     * @return bool
-     */
-    public function isFuncionario(): bool
-    {
-        return $this->role === 'funcionario';
-    }
+    
 }
