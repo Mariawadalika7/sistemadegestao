@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElectroManager - Login</title>
+    <title>CentroMulticerviços - Login</title>
     <style>
         * {
             margin: 0;
@@ -142,7 +142,7 @@
     <div class="login-container">
         <div class="logo">
             <span class="logo-icon">⚡</span>
-            ElectroManager
+            CentroMultisserviços
         </div>
 
         <h1>Bem-vindo de volta!</h1>

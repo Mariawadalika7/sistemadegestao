@@ -1,11 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
-</html>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Cadastro de Clientes') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900">
+                    @if(session('success'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                            <span class="block sm:inline">{{ session('success') }}</span>
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ route('clientes.store') }}">
+                        @csrf
+
+                        <!-- Nome do Cliente -->
+                        <div class="mt-4">
+                            <x-input-label for="nome" :value="__('Nome')" />
+                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" :value="old('nome')" required autofocus />
+                            <x-input-error :messages="$errors->get('nome')" class="mt-2" />
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mt-4">
+                            <x-input-label for="email" :value="__('Email')" />
+                            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
+
+                        <!-- Telefone -->
+                        <div class="mt-4">
+                            <x-input-label for="telefone" :value="__('Telefone')" />
+                            <x-text-input id="telefone" class="block mt-1 w-full" type="text" name="telefone" :value="old('telefone')" required />
+                            <x-input-error :messages="$errors->get('telefone')" class="mt-2" />
+                        </div>
+
+                        <!-- Endereço -->
+                        <div class="mt-4">
+                            <x-input-label for="endereco" :value="__('Endereço')" />
+                            <x-text-input id="endereco" class="block mt-1 w-full" type="text" name="endereco" :value="old('endereco')" required />
+                            <x-input-error :messages="$errors->get('endereco')" class="mt-2" />
+                        </div>
+
+                        <!-- Observação -->
+                        <div class="mt-4">
+                            <x-input-label for="observacao" :value="__('Observação')" />
+                            <textarea id="observacao" name="observacao" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">{{ old('observacao') }}</textarea>
+                            <x-input-error :messages="$errors->get('observacao')" class="mt-2" />
+                        </div>
+
+                        <div class="flex items-center justify-end mt-4">
+                            <a href="{{ route('clientes.index') }}" class="inline-flex items-center px-4 py-2 bg-gray-300 border border-transparent rounded-md font-semibold text-xs text-gray-800 uppercase tracking-widest hover:bg-gray-400 focus:bg-gray-400 active:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150 mr-2">
+                                {{ __('Cancelar') }}
+                            </a>
+                            <x-primary-button class="ml-4">
+                                {{ __('Cadastrar') }}
+                            </x-primary-button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

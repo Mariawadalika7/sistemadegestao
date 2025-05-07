@@ -28,7 +28,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        // Redirecionar para rota de verificação de tipo de usuário
+        return redirect()->route('check.user.type');
     }
 
     /**

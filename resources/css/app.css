@@ -1,3 +1,299 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Classes utilitárias para appearance */
+.appearance-none {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+.appearance-auto {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    -ms-appearance: auto;
+    -o-appearance: auto;
+    appearance: auto;
+}
+
+.appearance-menulist {
+    -webkit-appearance: menulist;
+    -moz-appearance: menulist;
+    -ms-appearance: menulist;
+    -o-appearance: menulist;
+    appearance: menulist;
+}
+
+.appearance-textfield {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    -ms-appearance: textfield;
+    -o-appearance: textfield;
+    appearance: textfield;
+}
+
+.appearance-button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    -ms-appearance: button;
+    -o-appearance: button;
+    appearance: button;
+}
+
+.appearance-checkbox {
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    -ms-appearance: checkbox;
+    -o-appearance: checkbox;
+    appearance: checkbox;
+}
+
+.appearance-radio {
+    -webkit-appearance: radio;
+    -moz-appearance: radio;
+    -ms-appearance: radio;
+    -o-appearance: radio;
+    appearance: radio;
+}
+
+/* Normalização da propriedade appearance para compatibilidade entre navegadores */
+select,
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="color"],
+input[type="range"],
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+button,
+textarea,
+meter,
+progress,
+::-webkit-calendar-picker-indicator,
+::-webkit-clear-button,
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button,
+::-webkit-search-cancel-button,
+::-webkit-search-results-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+/* Estilos para controles de formulários nativos para Webkit e Blink */
+::-webkit-datetime-edit,
+::-webkit-datetime-edit-fields-wrapper,
+::-webkit-datetime-edit-text,
+::-webkit-datetime-edit-minute,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-year-field {
+    padding: 0;
+}
+
+/* Impede o botão de spinners em inputs numéricos */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Estilização para checkboxes e radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    border-radius: 3px;
+}
+
+input[type="radio"] {
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: white;
+}
+
+/* Estilização personalizada para select */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cpath fill='%23666' d='M0 2l4 4 4-4z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 8px;
+    padding-right: 2rem;
+    text-overflow: ellipsis;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.25rem;
+}
+
+/* Estilização para botões */
+button {
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    text-align: center;
+}
+
+/* Remover borda ao focar elementos de formulário no Firefox */
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    border-style: none;
+    padding: 0;
+}
+
+/* Normalização de foco em todos os navegadores */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Compatibilidade para dispositivos touch */
+@media (hover: none) {
+    button:hover,
+    input[type="submit"]:hover,
+    input[type="reset"]:hover,
+    input[type="button"]:hover {
+        background-image: none;
+    }
+}
+
+/* Estilos personalizados */
+.bg-blue-header {
+    background-color: #2d3748 !important; /* Cinza escuro */
+}
+
+.sidebar {
+    width: 280px;
+    min-height: calc(100vh - 64px);
+    background-color: #2d3748; /* Cinza escuro */
+    color: white;
+    transition: all 0.3s;
+}
+
+.sidebar-hidden {
+    margin-left: -280px;
+}
+
+.sidebar-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #e2e8f0;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left-color: #2563eb;
+}
+
+.sidebar-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left-color: #2563eb;
+    color: white;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        z-index: 40;
+    }
+    
+    .content-with-sidebar {
+        margin-left: 0 !important;
+    }
+}
+
+.content-with-sidebar {
+    transition: margin-left 0.3s;
+}
+
+/* Cards coloridos */
+.card-blue {
+    background-color: #3182ce;
+    border-color: #2c5282;
+    color: white;
+}
+
+.card-green {
+    background-color: #38a169;
+    border-color: #2f855a;
+    color: white;
+}
+
+.card-yellow {
+    background-color: #d69e2e;
+    border-color: #b7791f;
+    color: white;
+}
+
+.card-red {
+    background-color: #e53e3e;
+    border-color: #c53030;
+    color: white;
+}
+
+/* Estilos para links e botões nos cards coloridos */
+.card-blue a, .card-green a, .card-yellow a, .card-red a,
+.card-blue button, .card-green button, .card-yellow button, .card-red button {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.card-blue a:hover, .card-green a:hover, .card-yellow a:hover, .card-red a:hover,
+.card-blue button:hover, .card-green button:hover, .card-yellow button:hover, .card-red button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
