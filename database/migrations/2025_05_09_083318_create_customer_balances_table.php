@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('customer_balances', function (Blueprint $table) {
             $table->uuid('uuid')->unique(); 
             $table->integer('current_balance');
-            $table->foreignIdFor(Customer::class);
+            $table->uuid('customer_uuid');
+            $table->foreign('customer_uuid')->references('uuid')->on('customers');
             $table->timestamps();
         });
     }

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->uuid('uuid')->unique();
             $table->string('service_name');
             $table->decimal('service_price',10,2);
-            $table->foreignIdFor(Enterprise::class); 
+            $table->uuid('enterprise_uuid');
+            $table->foreign('enterprise_uuid')->references('uuid')->on('enterprises');
             $table->timestamps();
         });
     }

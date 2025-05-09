@@ -18,8 +18,10 @@ return new class extends Migration
             $table->date('birthday');
             $table->string('phone_number',20);
             $table->string('address');
-            $table->foreignIdFor(Employee::class)->nullable();
-            $table->foreignIdFor(Customer::class)->nullable();
+            $table->uuid('customer_uuid')->nullable();
+            $table->uuid('employee_uuid')->nullable();
+            $table->foreign('customer_uuid')->references('uuid')->on('customers');
+            $table->foreign('employee_uuid')->references('uuid')->on('employees');
             $table->timestamps();
         });
     }
