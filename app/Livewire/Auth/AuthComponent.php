@@ -13,6 +13,7 @@ use Livewire\Component;
 class AuthComponent extends Component
 {
     #[Layout('layouts.auth.app')] 
+    
     #[Validate('required', message: 'Campo obritório*')]
     public $email;
 
@@ -26,8 +27,7 @@ class AuthComponent extends Component
         return view('livewire.auth.auth-component');
     }
 
-    public function signIn (User $user_table) {
-        dd();
+    public function signIn (User $user_table) {       
         $this->validate();
         try {
            
