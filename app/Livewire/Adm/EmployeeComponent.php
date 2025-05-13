@@ -4,6 +4,7 @@ namespace App\Livewire\Adm;
 
 use App\Models\Employee;
 use App\Models\PersonalData;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -104,6 +105,7 @@ class EmployeeComponent extends Component
             'old_password',
             'fullname',
             'position',
+            'birthday',
             'salary',
             'phone_number',
             'address',
@@ -184,8 +186,9 @@ class EmployeeComponent extends Component
     public function save (PersonalData $personal_data_tb, User $user_tb, Employee $employee_tb) {       
         $this->validate();
         try {
+          $role = Role::query()->where('role_type', 'admin')->first();
+          
           DB::beginTransaction();
-
          $employee = $employee_tb->create([
             'position' =>$this->position,
             'salary' =>$this->salary
@@ -203,6 +206,7 @@ class EmployeeComponent extends Component
             'username' =>$this->username,
             'email' =>$this->email,
             'password' =>Hash::make($this->password),
+            'role_uuid' =>$role->uuid,
             'employee_id' =>$employee->uuid
         ]); 
 

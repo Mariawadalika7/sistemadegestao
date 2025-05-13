@@ -44,12 +44,12 @@
                                             @if (isset($employees) and $employees->count() > 0)
                                                 @foreach ($employees as $employee)
                                                             <tr>  
-                                                                <td>{{$employee->fullname}}</td>     
-                                                                <td>{{$employee->birthday}}</td>    
-                                                                 <td>{{$employee->employee->position}}</td>       
+                                                                <td>{{$employee->fullname ?? ''}}</td>     
+                                                                <td>{{$employee->birthday ?? ''}}</td>    
+                                                                 <td>{{$employee->employee->position ?? ''}}</td>       
                                                                 <td>{{$employee->employee->salary ?? '0,00'}}Kz</td>    
-                                                                 <td>{{$employee->phone_number}}</td>   
-                                                                 <td>{{$employee->address}}</td>    
+                                                                 <td>{{$employee->phone_number ?? ''}}</td>   
+                                                                 <td>{{$employee->address ?? ''}}</td>    
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center'>
                                                                         <button 
