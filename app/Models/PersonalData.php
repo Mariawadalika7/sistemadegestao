@@ -12,7 +12,7 @@ class PersonalData extends Model
     protected $primaryKey = 'uuid';
     public $incrementing = false;
     protected $keyType = 'string';
-    
+
     protected $fillable = [
         'fullname',
         'birthday',
@@ -21,4 +21,8 @@ class PersonalData extends Model
         'customer_uuid',
         'employee_uuid',
     ];
+
+    public function employee () {
+        return $this->belongsTo(Employee::class, 'employee_uuid', 'uuid');
+    }
 }
