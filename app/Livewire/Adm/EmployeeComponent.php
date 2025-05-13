@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\PersonalData;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -15,8 +16,27 @@ class EmployeeComponent extends Component
     #[Layout('layouts.admin.app')] 
     public $uuid,$searcher,$startdate,$enddate, $status, $fullname,$position,$phone_number,$salary,$birthday,$address,$employee,$user,$username,$email,$password,$old_password;
     
-    protected $rules = ['fullname' => 'required'];
-    protected $messages = ['fullname.required' => 'Campo obrigatório*'];
+    protected $rules = [
+        'fullname' => 'required',
+        'salary' => 'required',
+        'position' => 'required',
+        'birthday' => 'required', 
+        'phone_number' => 'required',  
+        'address' => 'required',
+        'email' => 'required',  
+        'password' => 'required',   
+    ];
+          
+    protected $messages = [
+        'fullname.required' => 'Campo obrigatório*',
+        'salary.required' => 'Campo obrigatório*',
+        'position.required' => 'Campo obrigatório*',
+        'birthday.required' => 'Campo obrigatório*',
+        'phone_number.required' => 'Campo obrigatório*',
+        'address.required' => 'Campo obrigatório*',
+        'email.required' => 'Campo obrigatório*',
+        'password.required' => 'Campo obrigatório*',
+   ];
     
     
     public function render()
@@ -102,9 +122,27 @@ class EmployeeComponent extends Component
     }
 
     public function update (PersonalData $personal_data_tb, User $user_tb, Employee $employee_tb) {
-        $this->validate();
+        $this->validate([            
+                'fullname' => 'required',
+                'salary' => 'required',
+                'position' => 'required',
+                'birthday' => 'required', 
+                'phone_number' => 'required',  
+                'address' => 'required',
+                'email' => 'required',  
+    
+        ],[
+             'fullname.required' => 'Campo obrigatório*',
+            'salary.required' => 'Campo obrigatório*',
+            'position.required' => 'Campo obrigatório*',
+            'birthday.required' => 'Campo obrigatório*',
+            'phone_number.required' => 'Campo obrigatório*',
+            'address.required' => 'Campo obrigatório*',
+            'email.required' => 'Campo obrigatório*',
+        ]);
         try {
         DB::beginTransaction();
+
         $personal_data_tb::find($this->uuid)->update([
             'fullname' =>$this->fullname,
             'address' =>$this->address,
@@ -118,7 +156,7 @@ class EmployeeComponent extends Component
             'password' =>$this->password ? $this->password : $this->old_password,
         ]);
 
-        $this->$this->employee->update([
+        $this->employee->update([
             'position' =>$this->position,
             'salary' =>$this->salary
         ]);
@@ -126,7 +164,7 @@ class EmployeeComponent extends Component
         DB::commit();
         LivewireAlert::title('SUCESSO')
             ->text('Dados atualizados com sucesso!')
-            ->error()
+            ->success()
             ->withConfirmButton()
             ->confirmButtonText('Fechar')
             ->show();
@@ -138,15 +176,47 @@ class EmployeeComponent extends Component
             ->error()
             ->withConfirmButton()
             ->confirmButtonText('Close')
+            ->timer(0)
             ->show();
         }
     }
 
-    public function save () {
+    public function save (PersonalData $personal_data_tb, User $user_tb, Employee $employee_tb) {       
         $this->validate();
         try {
-            //code...
+          DB::beginTransaction();
+
+         $employee = $employee_tb->create([
+            'position' =>$this->position,
+            'salary' =>$this->salary
+        ]);
+
+        $personal_data_tb::create([
+            'fullname' =>$this->fullname,
+            'address' =>$this->address,
+            'birthday' =>$this->birthday,
+            'phone_number' =>$this->phone_number,
+            'employee_id' =>$employee->uuid
+        ]);
+
+        $user_tb->create([
+            'username' =>$this->username,
+            'email' =>$this->email,
+            'password' =>Hash::make($this->password),
+            'employee_id' =>$employee->uuid
+        ]); 
+
+        DB::commit();
+        LivewireAlert::title('SUCESSO')
+            ->text('Dados salvos com sucesso!')
+            ->success()
+            ->withConfirmButton()
+            ->confirmButtonText('Fechar')
+            ->show();
+            $this->close_modal();
+
         } catch (\Throwable $th) {
+        DB::rollBack();
         LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())
             ->error()

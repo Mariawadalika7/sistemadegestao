@@ -6,7 +6,7 @@
         <button wire:click='close_modal' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form wire:submit="{{ $status ? 'update' : 'save' }}">
+        <form >
             <div class='col-md-12 gap-1 d-flex align-items-start'>
                 <div class='col-md-6'>
 
@@ -53,10 +53,10 @@
             <div>
                 <h4 class='text-uppercase text-muted'>Dados de acesso:</h4>
                 
-                <div class='d-flex align-items-center gap-1'>
+                <div class='d-flex align-items-start gap-1'>
 
                      <div class='form-group'>
-                        <label>Nome de usuário(opcional)</label>
+                        <label>Nome de usuário (opcional)</label>
                         <input wire:model='username' class='form-control' type='text' />                        
                     </div>
 
@@ -79,17 +79,19 @@
       </div>
       <div class="modal-footer">
         <button 
-    type="button"
-    class="btn btn-secondary text-uppercase"
-    data-bs-dismiss="modal">
-  Fechar
-</button>
+            type="button"
+            class="btn btn-secondary text-uppercase"
+            data-bs-dismiss="modal">
+           Fechar
+        </button>
 
-<button 
-     type='submit'
-      class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
-      {{$status ? 'Atualizar' : 'Salvar'}} 
-</button>
+        <button 
+            wire:click='{{ $status ? 'update' : 'save' }}'
+            type='submit'
+            class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
+            {{$status ? 'Atualizar' : 'Salvar'}} 
+        </button>
+
       </div>
     </div>
   </div>
