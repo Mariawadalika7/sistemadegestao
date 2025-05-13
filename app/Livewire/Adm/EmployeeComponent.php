@@ -10,7 +10,7 @@ use Livewire\Component;
 class EmployeeComponent extends Component
 {
     #[Layout('layouts.admin.app')] 
-    public $searcher,$startdate,$enddate;
+    public $uuid,$searcher,$startdate,$enddate, $status, $fullname,$position,$phone_number,$salary,$birthday,$address;
     public function render()
     {
         return view('livewire.adm.employee-component',[
@@ -31,6 +31,34 @@ class EmployeeComponent extends Component
             }else{
                 return PersonalData::query()->with('employee')->get();
             }
+        } catch (\Throwable $th) {
+        LivewireAlert::title('Erro')
+            ->text('erro: ' .$th->getMessage())
+            ->error()
+            ->withConfirmButton()
+            ->confirmButtonText('Close')
+            ->show();
+        }
+    }
+
+    public function edit ($uuid) {
+        try {
+            $this->uuid = $uuid;   
+           $this->status = true;
+                     
+        } catch (\Throwable $th) {
+        LivewireAlert::title('Erro')
+            ->text('erro: ' .$th->getMessage())
+            ->error()
+            ->withConfirmButton()
+            ->confirmButtonText('Close')
+            ->show();
+        }
+    }
+
+    public function close_modal () {
+        try {
+           $this->status = false;
         } catch (\Throwable $th) {
         LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())

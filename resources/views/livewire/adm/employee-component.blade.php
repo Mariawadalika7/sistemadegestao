@@ -52,8 +52,18 @@
                                                                  <td>{{$employee->address}}</td>    
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center'>
-                                                                        <button data-bs-target='#form-employee' data-bs-toggle='modal' class='btn btn-primary btn-sm'><i class='fa fa-edit'></i></button>
-                                                                        <button class='btn btn-danger btn-sm'><i class='fa fa-trash-alt'></i></button>
+                                                                        <button 
+                                                                            wire:click="edit('{{ $employee->uuid }}')"
+                                                                            data-bs-target='#form-employee' 
+                                                                            data-bs-toggle='modal'
+                                                                            class='btn btn-primary btn-sm'>
+                                                                            <i class='fa fa-edit'></i>
+                                                                        </button>
+
+                                                                        <button 
+                                                                            class='btn btn-danger btn-sm'>
+                                                                            <i class='fa fa-trash-alt'></i>
+                                                                       </button>
                                                                     </div>
                                                                 </td>   
                                                             </tr>                                                    
@@ -73,7 +83,7 @@
 
                         
                     </div>
-                    <x-modals.form-employee />
+                    <x-modals.form-employee :status='$status' />
                </main>
                <x-footer />                
             </div>
