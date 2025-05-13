@@ -17,18 +17,16 @@
     </head>
     <body class="sb-nav-fixed">
 
-{{ $slot }}
- <livewire:scripts />   
- <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-
-        <script src="{{ asset('dashboard/js/vendor.bundle.base.js') }}" ></script>
-        <script src="{{ asset('dashboard/js/scripts.js') }}"></script>
-        <script src="{{ asset('dashboard/js/ajax-chart.js') }}" crossorigin="anonymous"></script>
-        <script src="{{ asset('dashboard/assets/demo/chart-area-demo.js') }}"></script>
-        <script src="{{ asset('dashboard/assets/demo/chart-bar-demo.js') }}"></script>
-        <script src="{{ asset('dashboard/js/simple-datatables.js') }}" ></script>
-        <script src="{{ asset('dashboard/js/datatables-simple-demo.js') }}"></script>
-    </body>
+    {{ $slot }}
+    <livewire:scripts />   
+    <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
+    <script src="{{ asset('dashboard/js/font-awesome-v6.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('dashboard/js/vendor.bundle.base.js') }}" ></script>
+    <script src="{{ asset('dashboard/js/scripts.js') }}"></script>
+    <script src="{{ asset('dashboard/js/ajax-chart.js') }}" crossorigin="anonymous"></script>
+    <script src="{{ asset('dashboard/assets/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/demo/chart-bar-demo.js') }}"></script>
+    <script src="{{ asset('dashboard/js/simple-datatables.js') }}" ></script>
+    <script src="{{ asset('dashboard/js/datatables-simple-demo.js') }}"></script>
+</body>
 </html>
