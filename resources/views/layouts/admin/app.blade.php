@@ -23,10 +23,7 @@
     <script src="{{ asset('dashboard/js/font-awesome-v6.js') }}" crossorigin="anonymous"></script>
     <script src="{{ asset('dashboard/js/vendor.bundle.base.js') }}" ></script>
     <script src="{{ asset('dashboard/js/scripts.js') }}"></script>
-    <script src="{{ asset('dashboard/js/ajax-chart.js') }}" crossorigin="anonymous"></script>
-    <script src="{{ asset('dashboard/assets/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('dashboard/assets/demo/chart-bar-demo.js') }}"></script>
-    <script src="{{ asset('dashboard/js/simple-datatables.js') }}" ></script>
-    <script src="{{ asset('dashboard/js/datatables-simple-demo.js') }}"></script>
+
+    @stack('dashboard-home')
 </body>
 </html>

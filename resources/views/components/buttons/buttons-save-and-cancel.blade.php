@@ -6,7 +6,7 @@
 </button>
 
 <button 
-      wire:click='{{ $status ? 'update' : 'save' }}'
-      class="btn  text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
+     type='submit'
+      class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
       {{$status ? 'Atualizar' : 'Salvar'}} 
 </button>

@@ -32,7 +32,8 @@
               
             </div>
 
-            <button 
+            <button
+                type='submit' 
                 class="login-button">
                 Entrar no Sistema
             </button>

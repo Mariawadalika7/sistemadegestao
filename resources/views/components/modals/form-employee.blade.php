@@ -6,7 +6,7 @@
         <button wire:click='close_modal' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form wire:submit="{{ $status ? 'update' : 'save' }}">
             <div class='col-md-12 gap-1 d-flex align-items-start'>
                 <div class='col-md-6'>
 
@@ -31,7 +31,6 @@
                 </div>
 
                 <div class='col-md-6'>
-
                      <div class='form-group'>
                         <label>Salário:</label>
                         <input min="1" type='number' class='form-control' wire:model='salary' />
@@ -73,15 +72,24 @@
                           @error('password')<span class='text-danger'>{{$message}}</span>@enderror
                     </div>
 
-
-
                 </div>
             </div>
 
         </form>
       </div>
       <div class="modal-footer">
-       <x-buttons.buttons-save-and-cancel :status='$status' />
+        <button 
+    type="button"
+    class="btn btn-secondary text-uppercase"
+    data-bs-dismiss="modal">
+  Fechar
+</button>
+
+<button 
+     type='submit'
+      class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
+      {{$status ? 'Atualizar' : 'Salvar'}} 
+</button>
       </div>
     </div>
   </div>
