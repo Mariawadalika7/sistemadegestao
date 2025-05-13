@@ -15,7 +15,7 @@
                                 <div class='d-flex col-md-12 align-items-center gap-2'>
 
                                     <div class='col-md-6 d-flex align-items-center gap-1'>
-                                        <button class='btn btn-primary'>Adicionar</button>
+                                        <button data-bs-target='#form-employee' data-bs-toggle='modal' class='btn btn-primary'>Adicionar</button>
                                        <input wire:model.live='searcher' class='form-control' type='text' placeholder='Pesquisar funcionário' />
                                     </div>                                   
 
@@ -52,7 +52,7 @@
                                                                  <td>{{$employee->address}}</td>    
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center'>
-                                                                        <button class='btn btn-primary btn-sm'><i class='fa fa-edit'></i></button>
+                                                                        <button data-bs-target='#form-employee' data-bs-toggle='modal' class='btn btn-primary btn-sm'><i class='fa fa-edit'></i></button>
                                                                         <button class='btn btn-danger btn-sm'><i class='fa fa-trash-alt'></i></button>
                                                                     </div>
                                                                 </td>   
@@ -73,10 +73,8 @@
 
                         
                     </div>
+                    <x-modals.form-employee />
                </main>
-
-
-
                <x-footer />                
             </div>
         </div>
