@@ -13,16 +13,11 @@ use Livewire\Component;
 
 class AuthComponent extends Component
 {
-    #[Layout('layouts.auth.app')]     
-    
-    #[Validate('required', message: 'Campo obritório*')]
-    public $email;
-    
-    #[Validate('required', message: 'Campo obritório*')]
-    public $password;
+    #[Layout('layouts.auth.app')]
 
-    public $user,$admin,$role,$credentials,$phone_number;
-
+    public $email, $password,$user,$admin,$role,$credentials,$phone_number;
+    protected $rules = ['email' => 'required', 'password' =>'required'];
+    protected $messages = ['email.required' => 'Campo obritório*', 'password.required' =>'Campo obritório*'];
     public function mount () {
         $this->verifyIfAlreadyHaveOneAdminUser();
     }
@@ -31,17 +26,17 @@ class AuthComponent extends Component
         return view('livewire.auth.auth-component');
     }
 
-    public function sign_in (User $user_table) {          
-        $this->validate();
+    public function sign_in () {
+       $this->validate();
         try {
 
             if (Auth::attempt(["email" =>$this->email, "password" =>$this->password])) {
                 if (auth()->user()->role->role_type == 'customer') {
-                       return redirect()->route('buyer.home'); 
+                       return redirect()->route('buyer.home');
                     }else if (auth()->user()->role->role_type == 'admin') {
-                        return redirect()->route('dashboard.admin.home');  
+                        return redirect()->route('dashboard.admin.home');
                     }else if (auth()->user()->role->role_type == 'employee') {
-                        return redirect()->route('dashboard.admin.home');                          
+                        return redirect()->route('dashboard.admin.home');
                 }
             }else{
             LivewireAlert::title('Atenção')
@@ -88,7 +83,7 @@ class AuthComponent extends Component
                 'password' => Hash::make('admin#'),
                 'employee_uuid' =>$employee->uuid
             ]);
-           
+
             DB::commit();
           }
         } catch (\Throwable $th) {
