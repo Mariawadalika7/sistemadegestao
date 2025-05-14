@@ -48,29 +48,19 @@
             <!-- Password -->
             <div class="form-group">
                 <label for="password">Senha</label>
-                <input id="password" type="password" name="password" required autocomplete="new-password">
-                @error('password')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
+                <input id="password" type="password" wire:model="password" required autocomplete="new-password">
+                @error('password')<div class="error-message">{{ $message }}</div> @enderror
             </div>
             <!-- Confirm Password -->
             <div class="form-group">
                 <label for="password_confirmation">Confirmar Senha</label>
                 <input id="password_confirmation" type="password" wire:model="password_confirmation" required autocomplete="new-password">
-                @error('password_confirmation')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
+                @error('password_confirmation') <div class="error-message">{{ $message }}</div> @enderror
             </div>
 
-            <button wire:click='sign_up' class="register-button">Cadastrar</button>      
-
-            <div class="login-link">
-                Já tem uma conta?
-                <a href="{{ route('login') }}">
-                    Faça login
-                </a>
-            </div>
+            <button wire:click='sign_up' class="register-button">Cadastrar</button>    
+            <div class="login-link"> Já tem uma conta?<a href="{{ route('login') }}">Faça login </a> </div>            
         </main>
-
+            
     </div>
 </div>

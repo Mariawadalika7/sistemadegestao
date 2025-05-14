@@ -134,8 +134,8 @@ class EmployeeComponent extends Component
             'address.required' => 'Campo obrigatório*',
             'email.required' => 'Campo obrigatório*',
         ]);
-        try {
-            
+
+        try {            
         DB::beginTransaction();
         $personal_data_tb::find($this->uuid)->update([
             'fullname' =>$this->fullname ?? '',
