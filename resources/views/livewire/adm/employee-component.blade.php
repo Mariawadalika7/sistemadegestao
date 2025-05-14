@@ -61,6 +61,7 @@
                                                                         </button>
 
                                                                         <button 
+                                                                            wire:click="delete('{{ $employee->uuid }}')"
                                                                             class='btn btn-danger btn-sm'>
                                                                             <i class='fa fa-trash-alt'></i>
                                                                        </button>
