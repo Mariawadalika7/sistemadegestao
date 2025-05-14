@@ -54,13 +54,17 @@ class EmployeeComponent extends Component
             if ($this->searcher) {
              return PersonalData::query()->where('fullname', 'like', '%' . $this->searcher . '%')
              ->with('employee')
+             ->where('customer_uuid',null)
              ->get();
             }else if ($this->startdate and $this->enddate) {
                 return PersonalData::query()->whereBetween('created_at',[$this->startdate,$this->enddate])
+                ->where('customer_uuid',null)
                 ->with('employee')                
                 ->get();
             }else{
-                return PersonalData::query()->with('employee')->get();
+                return PersonalData::query()->with('employee')
+                ->where('customer_uuid',null)
+                ->get();
             }
         } catch (\Throwable $th) {
         LivewireAlert::title('Erro')
@@ -180,7 +184,7 @@ class EmployeeComponent extends Component
         try {
           $role = Role::query()->where('role_type', 'employee')->first();
           
-          if ($this->birthday >= now()->format('Y-m-d')) {
+          if ($this->birthday >= now()->format('Y')) {
             LivewireAlert::title('ATENÇÃO')
                 ->text('A data de nascimento não deve ser igual ou superior a data atual!')
                 ->warning()
