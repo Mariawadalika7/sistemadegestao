@@ -16,7 +16,7 @@ class AuthComponent extends Component
 {
     #[Layout('layouts.auth.app')]
 
-    public $email,$password,$user,$admin,$role,$credentials,$phone_number,$availableRoles;
+    public $email,$password,$user,$admin,$role,$credentials,$phone_number,$availableRoles,$employee;
     protected $rules = ['email' => 'required', 'password' =>'required'];
     protected $messages = ['email.required' => 'Campo obritório*', 'password.required' =>'Campo obritório*'];
 
@@ -67,28 +67,31 @@ class AuthComponent extends Component
             ->whereHas('role', function ($q) {
             $q->where('role_type','admin');
           })->first();
-          $this->role = Role::query()->where('role_type', 'admin')->first();
+          $this->role = Role::query()->where('role_type', 'admin')->first();       
 
-        if (!$this->admin and !$this->role) {
+        if (!$this->admin)  {
         DB::beginTransaction();
-            $employee = Employee::query()->create(['position' =>'System manager']);
+            $this->employee = Employee::query()->create(['position' =>'CEO']);
             $personaldata = PersonalData::query()->create([
                 'fullname' =>'Admin',
                 'birthday' =>'1996-01-01',
                 'phone_number' =>'+244923453132',
                 'address' =>'Luanda,Angola',
-                'employee_uuid' =>$employee->uuid
-            ]);
-            $role = Role::query()->create(['role_type' =>'admin']);
-            $user = User::query()->create([
-                'role_uuid' =>$role->uuid,
+                'employee_uuid' =>$this->employee->uuid
+            ]);          
+          
+             !$this->role ? $role = Role::query()->create(['role_type' =>'admin']) : '';
+              $user = User::query()->create([
+                'role_uuid' => !$this->role ? $role->uuid : $this->role->uuid,
                 'email' =>'admin@gmail.com',
                 'username' =>'global_admin',
                 'password' => Hash::make('admin#'),
-                'employee_uuid' =>$employee->uuid
+                'employee_uuid' =>$this->employee->uuid
             ]);
+          
             DB::commit();
-          }
+        }
+
         } catch (Exception $ex) {
         DB::rollBack();
             LivewireAlert::title('Erro')

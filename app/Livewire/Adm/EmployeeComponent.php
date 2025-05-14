@@ -140,24 +140,33 @@ class EmployeeComponent extends Component
         ]);
 
         try {            
-        DB::beginTransaction();
-        $personal_data_tb::find($this->uuid)->update([
-            'fullname' =>$this->fullname ?? '',
-            'address' =>$this->address ?? '',
-            'birthday' =>$this->birthday ?? '',
-            'phone_number' =>$this->phone_number ?? '',
-        ]);
+              if ($this->birthday >= now()->format('Y')) {
+            LivewireAlert::title('ATENÇÃO')
+                ->text('A data de nascimento não deve ser igual ou superior a data atual!')
+                ->warning()
+                ->withConfirmButton()
+                ->confirmButtonText('Fechar')
+                ->show();
+            }else{
 
-        $this->user->update([
-            'username' =>$this->username ?? '',
-            'email' =>$this->email ?? '',
-            'password' =>$this->password ? $this->password : $this->old_password,
-        ]);
+            DB::beginTransaction();
+            $personal_data_tb::find($this->uuid)->update([
+                'fullname' =>$this->fullname ?? '',
+                'address' =>$this->address ?? '',
+                'birthday' =>$this->birthday ?? '',
+                'phone_number' =>$this->phone_number ?? '',
+            ]);
 
-        $this->employee->update([
-            'position' =>$this->position ?? '',
-            'salary' =>$this->salary ?? ''
-        ]);
+            $this->user->update([
+                'username' =>$this->username ?? '',
+                'email' =>$this->email ?? '',
+                'password' =>$this->password ? $this->password : $this->old_password,
+            ]);
+
+            $this->employee->update([
+                'position' =>$this->position ?? '',
+                'salary' =>$this->salary ?? ''
+            ]);
 
         DB::commit();
         LivewireAlert::title('SUCESSO')
@@ -166,6 +175,9 @@ class EmployeeComponent extends Component
             ->withConfirmButton()
             ->confirmButtonText('Fechar')
             ->show();
+
+            }
+        
            
         } catch (\Throwable $th) {
         DB::rollBack();

@@ -35,7 +35,7 @@ class SignUpComponent extends Component
         DB::begintransaction();
         
         try {
-             if ($this->birthday >= now()->format('Y') OR $this->birthday >= now()->format('Y')) {
+             if ($this->birthday >= now()->format('Y') ) {
              LivewireAlert::title('ATENÇÃO')
                 ->text('A data de nascimento não deve ser igual ou superior a data atual!')
                 ->warning()

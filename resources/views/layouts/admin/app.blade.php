@@ -12,13 +12,12 @@
         <link href="{{ asset('dashboard/css/styles.css') }}" rel="stylesheet" />
         <link href='{{ asset('global/css/font-awesome.css') }}' rel="stylesheet" />
         <link href='{{ asset('dashboard/css/datatables.css') }}' rel="stylesheet" />
-        @endassets
-        <livewire:styles />
+        @endassets       
     </head>
     <body class="sb-nav-fixed">
 
     {{ $slot }}
-    <livewire:scripts />   
+   
     <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
     <script src="{{ asset('dashboard/js/font-awesome-v6.js') }}" crossorigin="anonymous"></script>
     <script src="{{ asset('dashboard/js/vendor.bundle.base.js') }}" ></script>
