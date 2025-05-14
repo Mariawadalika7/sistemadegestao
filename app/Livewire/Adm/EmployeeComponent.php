@@ -24,7 +24,7 @@ class EmployeeComponent extends Component
         'birthday' => 'required', 
         'phone_number' => 'required',  
         'address' => 'required',
-        'email' => 'required|unique',  
+        'email' => 'required|unique:users',  
         'password' => 'required',   
     ];
           
@@ -102,17 +102,7 @@ class EmployeeComponent extends Component
     public function close_modal () {
         try {
            $this->status = false;
-           $this->reset([
-            'old_password',
-            'fullname',
-            'position',
-            'birthday',
-            'salary',
-            'phone_number',
-            'address',
-            'username',
-            'email',
-            ]);
+           $this->reset(['old_password','password','fullname','position','birthday','salary','phone_number', 'address','username','email']);
            $this->resetValidation();
         } catch (\Throwable $th) {
         LivewireAlert::title('Erro')
@@ -189,7 +179,16 @@ class EmployeeComponent extends Component
         try {
           $role = Role::query()->where('role_type', 'admin')->first();
           
-          DB::beginTransaction();
+          if ($this->birthday >= now()->format('Y-m-d')) {
+            LivewireAlert::title('ATENÇÃO')
+                ->text('A data de nascimento não deve ser igual ou superior a data atual!')
+                ->warning()
+                ->withConfirmButton()
+                ->confirmButtonText('Fechar')
+                ->show();
+
+          }else{
+            DB::beginTransaction();
           $employee = $employee_tb->create([
             'position' =>$this->position,
             'salary' =>$this->salary
@@ -219,6 +218,8 @@ class EmployeeComponent extends Component
             ->confirmButtonText('Fechar')
             ->show();
             $this->close_modal();
+          }
+          
 
         } catch (\Throwable $th) {
         DB::rollBack();

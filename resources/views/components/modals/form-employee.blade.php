@@ -33,7 +33,7 @@
                 <div class='col-md-6'>
                      <div class='form-group'>
                         <label>Salário:</label>
-                        <input min="1" type='number' class='form-control' wire:model='salary' />
+                        <input  type='number' class='form-control' wire:model='salary' />
                           @error('salary')<span class='text-danger'>{{$message}}</span>@enderror
                     </div>
                        <div class='form-group'>
