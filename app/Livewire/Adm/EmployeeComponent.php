@@ -178,7 +178,7 @@ class EmployeeComponent extends Component
     public function save (PersonalData $personal_data_tb, User $user_tb, Employee $employee_tb) {       
         $this->validate();
         try {
-          $role = Role::query()->where('role_type', 'admin')->first();
+          $role = Role::query()->where('role_type', 'employee')->first();
           
           if ($this->birthday >= now()->format('Y-m-d')) {
             LivewireAlert::title('ATENÇÃO')
@@ -189,7 +189,7 @@ class EmployeeComponent extends Component
                 ->show();
 
           }else{
-            DB::beginTransaction();
+          DB::beginTransaction();
           $employee = $employee_tb->create([
             'position' =>$this->position,
             'salary' =>$this->salary

@@ -15,7 +15,7 @@
                                 <div class='d-flex col-md-12 align-items-center gap-2'>
 
                                     <div class='col-md-6 d-flex align-items-center gap-1'>
-                                        <button data-bs-target='#form-employee' data-bs-toggle='modal' class='btn btn-primary'>Adicionar</button>
+                                        <button  data-bs-target='#form-employee' data-bs-toggle='modal' class='btn btn-primary {{ auth()->user()->role->role_type === 'admin' ? 'd-block' : 'd-none' }}'>Adicionar</button>
                                        <input wire:model.live='searcher' class='form-control' type='text' placeholder='Pesquisar funcionário' />
                                     </div>                                   
 
