@@ -24,7 +24,7 @@ class EmployeeComponent extends Component
         'birthday' => 'required', 
         'phone_number' => 'required',  
         'address' => 'required',
-        'email' => 'required',  
+        'email' => 'required|unique',  
         'password' => 'required',   
     ];
           
@@ -36,6 +36,7 @@ class EmployeeComponent extends Component
         'phone_number.required' => 'Campo obrigatório*',
         'address.required' => 'Campo obrigatório*',
         'email.required' => 'Campo obrigatório*',
+        'email.unique' => 'O email já existe*',
         'password.required' => 'Campo obrigatório*',
    ];
     
@@ -189,7 +190,7 @@ class EmployeeComponent extends Component
           $role = Role::query()->where('role_type', 'admin')->first();
           
           DB::beginTransaction();
-         $employee = $employee_tb->create([
+          $employee = $employee_tb->create([
             'position' =>$this->position,
             'salary' =>$this->salary
         ]);
@@ -199,7 +200,7 @@ class EmployeeComponent extends Component
             'address' =>$this->address,
             'birthday' =>$this->birthday,
             'phone_number' =>$this->phone_number,
-            'employee_id' =>$employee->uuid
+            'employee_uuid' =>$employee->uuid
         ]);
 
         $user_tb->create([
@@ -207,7 +208,7 @@ class EmployeeComponent extends Component
             'email' =>$this->email,
             'password' =>Hash::make($this->password),
             'role_uuid' =>$role->uuid,
-            'employee_id' =>$employee->uuid
+            'employee_uuid' =>$employee->uuid
         ]); 
 
         DB::commit();
