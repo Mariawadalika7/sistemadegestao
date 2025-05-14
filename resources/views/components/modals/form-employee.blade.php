@@ -86,8 +86,7 @@
         </button>
 
         <button 
-            wire:click='{{ is_bool($status) ? 'update()' : 'save()' }}'
-            type='submit'
+            wire:click="{{ is_bool($status) ? 'update' : 'save' }}"         
             class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
             {{$status ? 'Atualizar' : 'Salvar'}} 
         </button>
