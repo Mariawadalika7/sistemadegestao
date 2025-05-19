@@ -30,16 +30,16 @@ class AuthComponent extends Component
         return view('livewire.auth.auth-component');
     }
 
-    public function sign_in () {
+    public function signIn () {
        $this->validate();
         try {
 
-            if (Auth::attempt(["email" =>$this->email, "password" =>$this->password])) {
-                if (auth()->user()->role->role_type == 'customer') {
-                      // return redirect()->route('buyer.home');
-                    }else if (auth()->user()->role->role_type == 'admin') {
+            if (auth()->attempt(["email" =>$this->email, "password" =>$this->password])) {
+                if (auth()->user()->role->role_type === 'customer') {
+                      // return redirect()->route('customer.home');
+                    }else if (auth()->user()->role->role_type === 'admin') {
                         return redirect()->route('dashboard.admin.home');
-                    }else if (auth()->user()->role->role_type == 'employee') {
+                    }else if (auth()->user()->role->role_type === 'employee') {
                         return redirect()->route('dashboard.admin.home');
                 }
             }else{
@@ -78,8 +78,7 @@ class AuthComponent extends Component
                 'phone_number' =>'+244923453132',
                 'address' =>'Luanda,Angola',
                 'employee_uuid' =>$this->employee->uuid
-            ]);          
-          
+            ]); 
              !$this->role ? $role = Role::query()->create(['role_type' =>'admin']) : '';
               $user = User::query()->create([
                 'role_uuid' => !$this->role ? $role->uuid : $this->role->uuid,
@@ -87,8 +86,7 @@ class AuthComponent extends Component
                 'username' =>'global_admin',
                 'password' => Hash::make('admin#'),
                 'employee_uuid' =>$this->employee->uuid
-            ]);
-          
+            ]);          
             DB::commit();
         }
 

@@ -4,7 +4,7 @@
          <x-side-bar />     
 
             <div id="layoutSidenav_content">
-                <x-stats />
+                <x-stats :customersCounter='$customersCounter' :paymentsCounter='$paymentsCounter' :paymentsCounter='$paymentsCounter' :reportCounter='$reportCounter' />
                <x-footer />
             </div>
         </div>

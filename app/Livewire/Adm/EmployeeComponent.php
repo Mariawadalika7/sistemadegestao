@@ -16,7 +16,7 @@ use Livewire\Component;
 class EmployeeComponent extends Component
 {
     #[Layout('layouts.admin.app')] 
-    public $uuid,$searcher,$startdate,$enddate, $status, $fullname,$position,$phone_number,$salary,$birthday,$address,$employee,$user,$username,$email,$password,$personal_data,$old_password;
+    public $uuid,$searcher,$startdate,$enddate,$status,$fullname,$position,$users,$phone_number,$salary,$birthday,$address,$employee,$user,$username,$email,$password,$personal_data,$old_password;
     protected $listeners = ['confirmEmployeeDeletion' => 'confirmEmployeeDeletion'];
     protected $rules = [
         'fullname' => 'required',
@@ -41,6 +41,24 @@ class EmployeeComponent extends Component
         'password.required' => 'Campo obrigatório*',
    ];
     
+   public function mount (User $all_users_tb) {
+
+        try {
+            $this->users = $all_users_tb::query()->with('role')
+            ->whereHas('role', function($q) {
+            $q->where('role_type', 'employee');
+        })->get();
+
+        } catch (\Throwable $th) {
+        LivewireAlert::title('Erro')
+            ->text('erro: ' .$th->getMessage())
+            ->error()
+            ->withConfirmButton()
+            ->confirmButtonText('Close')
+            ->show();
+        }  
+   }
+
     
     public function render()
     {
@@ -52,19 +70,37 @@ class EmployeeComponent extends Component
     public function getEmployees () {
         try {
             if ($this->searcher) {
-             return PersonalData::query()->where('fullname', 'like', '%' . $this->searcher . '%')
-             ->with('employee')
-             ->where('customer_uuid',null)
-             ->get();
-            }else if ($this->startdate and $this->enddate) {
-                return PersonalData::query()->whereBetween('created_at',[$this->startdate,$this->enddate])
-                ->where('customer_uuid',null)
-                ->with('employee')                
-                ->get();
+                if (isset($this->users) && $this->users->count() > 0) {
+                    foreach ($this->users as $only_employee) {
+                        return PersonalData::query()->where('fullname', 'like', '%' . $this->searcher . '%')
+                        ->with('employee')
+                        ->whereNull('customer_uuid')
+                        ->where('employee_uuid', $only_employee->employee_uuid)
+                        ->get();
+                    }
+                }
+
+            }else if ($this->startdate and $this->enddate) { 
+                if (isset($this->users) && $this->users->count() > 0) {               
+                    foreach ($this->users as $only_employee) {
+                        return PersonalData::query()->whereBetween('created_at',[$this->startdate,$this->enddate])
+                        ->whereNull('customer_uuid')
+                        ->where('employee_uuid', $only_employee->employee_uuid)
+                        ->with('employee')                
+                        ->get();
+                    }
+                }
             }else{
-                return PersonalData::query()->with('employee')
-                ->where('customer_uuid',null)
-                ->get();
+                if (isset($this->users) && $this->users->count() > 0) {
+                    foreach ($this->users as $only_employee) {
+                        return PersonalData::query()->with('employee')
+                        ->whereNull('customer_uuid')
+                        ->where('employee_uuid', $only_employee->employee_uuid)
+                        ->get();
+                    }
+                }
+                    
+
             }
         } catch (\Throwable $th) {
         LivewireAlert::title('Erro')

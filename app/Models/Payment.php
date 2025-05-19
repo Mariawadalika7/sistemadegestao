@@ -15,6 +15,7 @@ class Payment extends Model
     
     protected $fillable = [
         'payment_method',
+        'payment_report_generated_counter',
         'payment_file',
         'customer_uuid'
     ];

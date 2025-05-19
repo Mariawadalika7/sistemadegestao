@@ -1,5 +1,5 @@
+@section('title', 'CentroMulticerviços - Login')
 <div>
-    @section('title', 'CentroMulticerviços - Login')
    <div class="login-container">
                 <div class="logo">
                     <span class="logo-icon">⚡</span>
@@ -11,15 +11,16 @@
                     <p class="subtitle">Acesse sua conta para gerenciar o sistema</p>
                 </div>
 
+            <form wire:submit='signIn'>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input id="email" type="email" wire:model="email" required  />
+                    <input id="email" type="email" wire:model="email"  />
                     @error('email')<span class='text-danger'>{{$message}}</span>@enderror
                 </div>
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input id="password" type="password" wire:model="password" required />
+                    <input id="password" type="password" wire:model="password" />
                     @error('password')<span class='text-danger'>{{$message}}</span>@enderror
                 </div>
 
@@ -31,12 +32,12 @@
                 </div>
 
                 <div>
-                    <button
-                        wire:click='sign_in'
+                    <button                       
                         class="login-button">
                         Entrar no Sistema
                     </button>
                 </div>
+            </form>
 
                 <div class="register">
                     Não tem uma conta?
