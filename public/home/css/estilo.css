@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-inter: "Inter", system-ui, sans-serif;
+    --font-roboto: "Roboto", system-ui, sans-serif;
+}
+
+header.ativado .navMobile {
+    @apply translate-x-0
+}
+
+.linha {
+    @apply relative
+}
+
+header.ativado .linha0 {
+    @apply right-2
+}
+
+header.ativado .linha2 {
+    @apply left-2
+}
+
+.navMobile {
+    @apply flex items-center flex-col top-0 absolute bg-[url(../img/bg_menu_mobile.png)] bg-center bg-no-repeat backdrop-blur-2xl h-screen justify-around right-0 w-screen translate-x-full duration-800 ease-in delay-150 md:static md:flex md:flex-row md:translate-x-0 md:h-auto md:bg-transparent md:w-auto md:gap-2 pt-4 md:bg-none md:pt-0
+}
+
+.linksMenu {
+    @apply font-inter font-medium hover:text-[#e10600] text-white duration-400 ease-in
+}
+
+.navBotoes {
+    @apply bg-[#212121] p-1 rounded-full border-2 border-[#2E2C2C] w-max
+}
+
+.botao {
+    @apply rounded-full p-1 font-inter font-bold text-white cursor-pointer duration-400 ease-in px-2
+}
+
+.botaoSecundario {
+    @apply hover:text-[#E10600]
+}
+
+.botaoPrimario {
+    box-shadow: 0 0 16px #E10600;
+    @apply bg-[#E10600];
+}
+
+.linha {
+    @apply bg-[#E10600] w-[2rem] h-[4px] m-1 rounded-full
+}
+
+.textoColorido {
+    @apply text-[#E10600] text-shadow-md text-shadow-[#E10600]
+}
+
+.textoDestaque {
+    @apply font-bold
+}
+
+.textoDestaque1 {
+    @apply text-[#B0B0B0]
+}
+
+.subtitulo {
+    @apply text-[25pt] font-roboto font-bold text-white
+}
+
+.textoSubtitulo {
+    @apply text-white font-inter font-extralight
+}
+
+.textoSubtitulo0 {
+    @apply font-bold md:px-2 py-2 md:py-0
+}
+
+.areaTextoSubtitulo {
+    @apply flex md:items-center md:justify-between flex-col md:flex-row
+}
+
+#servicos {
+    @apply bg-contain bg-no-repeat bg-center bg-[url("../../assets/img/bg_menu_mobile.png")]
+}
+
+.contentServicos {
+    @apply flex flex-row gap-2 justify-start m-4 overflow-x-auto scroll-smooth snap-x snap-mandatory ;
+}
+
+.contentServicos {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;  
+}
+
+.contentServicos::-webkit-scrollbar {
+    display: none;
+}
+
+.cardServico {
+    flex: 0 0 auto;
+    @apply bg-[#212121] m-1 p-4 rounded-[8px] border-[#2E2C2C] border-2  md:m-2 w-[96%] md:w-[47%] overflow-hidden relative snap-start
+}
+
+.carousel-button {
+    @apply absolute top-1/2 -translate-y-1/2 z-[1] w-10 h-10 bg-[#e10600] text-white border-0 text-[25pt] cursor-pointer flex items-center justify-center transition duration-300 ease-in hover:bg-[#9A0000] rounded-[50%];
+}
+
+.carousel-button.prev {
+    left: -8%;
+}
+
+.carousel-button.next {
+    right: -5%;
+}
+
+.iconeServico {
+    @apply text-[#E10600] text-[35px]
+}
+
+.nomeServico {
+    @apply text-[#B0B0B0] font-bold font-roboto my-2 border-l-2 border-l-[#E10600] pl-2
+}
+
+.textoServico {
+    @apply text-white font-extralight font-inter
+}
+
+.contentAbout {
+    @apply flex flex-col items-center relative pt-5 
+}
+
+.cardFundador {
+    @apply p-4 m-2 border-2 rounded-[8px] flex flex-col items-center text-center justify-center border-[#2E2C2C] w-[80%] md:w-[25%] mb-5 sticky top-[4rem] md:top-[8rem] z-10 bg-[#151515]
+}
+
+.cardFundador .imgFundador {
+    @apply sm:grayscale-100 sm:ease-linear duration-300 
+}
+
+.cardFundador:hover .imgFundador {
+    @apply sm:grayscale-0
+}
+
+.nomeFundador {
+    @apply text-[#E10600] font-extrabold font-roboto
+}
+
+.cargoFundador {
+    @apply font-bold font-roboto text-[#B0B0B0]
+}
+
+.sobreFundador {
+    @apply text-white font-inter font-extralight
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+
+.iconeSocialMedia {
+    @apply hover:text-[#E10600] active:text-[#E10600] duration-200 ease-linear
+}
+
+.contentNavInputs {
+    @apply flex flex-wrap justify-center items-center mt-4 
+}
+
+.navInputs {
+    @apply flex flex-col gap-2.5 mx-7 relative
+}
+
+.navInputs label {
+    @apply font-inter font-bold text-[#B0B0B0] absolute text-[11pt] left-3 top-[16%] bg-[#151515] px-0.5 ease-linear duration-300 sm:top-[44%]
+}
+
+.navInputs input {
+    @apply border-[#B0B0B0] border-2 outline-0 text-white px-3 py-0.5 ease-linear duration-300 sm:mt-4
+}
+
+.contentNavInputs .navInputs input:focus,
+.contentNavInputs .navInputs input:hover,
+.contentNavInputs .navInputs input:not(:placeholder-shown) {
+    @apply border-2 border-[#E10600]
+}
+
+.contentNavInputs .navInputs input:focus + label,
+.contentNavInputs .navInputs input:not(:placeholder-shown) + label {
+    @apply text-[#E10600]  md:top-2
+}

@@ -1,10 +1,7 @@
  <?php
 
-use App\Livewire\Auth\AuthComponent;
-use App\Livewire\Home\HomeComponent;
-use Illuminate\Support\Facades\Route;
+use \App\Livewire\Home\HomeComponent;
+use \Illuminate\Support\Facades\Route;
 
- 
- 
- Route::get("/", AuthComponent::class);
- //Route::get("/", HomeComponent::class);
+  
+Route::get("/", HomeComponent::class)->name('home_page.multiservice.site');
