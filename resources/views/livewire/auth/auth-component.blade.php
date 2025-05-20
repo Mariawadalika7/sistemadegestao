@@ -37,9 +37,14 @@
                         Entrar no Sistema
                     </button>
                 </div>
+                 
+                   <div id='forgot_password'>
+                        <span>Esqueçeu a sua senha? </span><a href='{{ route('user.recover.password') }}'>clique aqui para recuperar</a>
+                    </div>
             </form>
-
+               
                 <div class="register">
+                  
                     Não tem uma conta?
                     <a href="{{ route('user.sign.up') }}">
                         Cadastre-se

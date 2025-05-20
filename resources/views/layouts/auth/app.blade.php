@@ -11,6 +11,6 @@
     
     {{ $slot }}    
 
-    <script src='{{ asset('global/js/sweetalert.js') }}'></script>
+    <script src='{{ asset('global/js/sweetalert.js') }}'></script>      
 </body>
 </html>
