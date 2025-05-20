@@ -44,7 +44,6 @@
         </div>                 
                    
         </form>
-
          <div  style='display:none;'  class="{{ !$isVerified ? 'd-none' : 'd-block' }}">
             <button  wire:click='finishResetPassword' class="recover-password-button">
               Atualizar
