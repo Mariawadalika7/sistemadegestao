@@ -24,7 +24,7 @@ class FixedTopBar extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
      
@@ -49,7 +49,7 @@ class FixedTopBar extends Component
                 ->text('erro: ' .$th->getMessage())
                 ->error()
                 ->withConfirmButton()
-                ->confirmButtonText('Close')
+                ->confirmButtonText('Fechar')
                 ->show();
             }
     }

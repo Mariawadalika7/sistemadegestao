@@ -26,7 +26,7 @@ class DashboardComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -47,7 +47,7 @@ class DashboardComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -60,7 +60,7 @@ class DashboardComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -74,7 +74,7 @@ class DashboardComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
        }
 

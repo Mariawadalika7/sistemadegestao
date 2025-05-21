@@ -54,7 +54,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }  
    }
@@ -107,7 +107,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -135,12 +135,12 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
 
-    public function close_modal () {
+    public function Fechar_modal () {
         try {
            $this->status = false;
            $this->reset(['old_password','password','fullname','position','birthday','salary','phone_number', 'address','username','email']);
@@ -150,7 +150,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -221,7 +221,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->timer(0)
             ->show();
         }
@@ -270,7 +270,7 @@ class EmployeeComponent extends Component
             ->withConfirmButton()
             ->confirmButtonText('Fechar')
             ->show();
-            $this->close_modal();
+            $this->Fechar_modal();
           }
           
 
@@ -280,7 +280,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -304,7 +304,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -325,7 +325,7 @@ class EmployeeComponent extends Component
             ->text('erro: ' .$ex->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->timer(0)
             ->show();
         }

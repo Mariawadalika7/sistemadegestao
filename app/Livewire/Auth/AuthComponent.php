@@ -47,7 +47,7 @@ class AuthComponent extends Component
                 ->text('Credenciais incorretas,tente novamente!')
                 ->warning()
                 ->withConfirmButton()
-                ->confirmButtonText('Close')
+                ->confirmButtonText('Fechar')
                  ->show();
             }
 
@@ -56,7 +56,7 @@ class AuthComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -96,7 +96,7 @@ class AuthComponent extends Component
             ->text('erro: ' .$ex->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->timer(0)
             ->show();
         }
@@ -121,7 +121,7 @@ class AuthComponent extends Component
                 ->text('erro: ' .$ex->getMessage())
                 ->error()
                 ->withConfirmButton()
-                ->confirmButtonText('Close')
+                ->confirmButtonText('Fechar')
                 ->timer(0)
                 ->show();
         }

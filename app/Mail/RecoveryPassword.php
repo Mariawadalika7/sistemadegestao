@@ -12,42 +12,19 @@ use Illuminate\Queue\SerializesModels;
 class RecoveryPassword extends Mailable
 {
     use Queueable, SerializesModels;
-
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    private $recovery_code;
+    public function __construct($random_recovery_code)
     {
-        //
+        $this->recovery_code = $random_recovery_code;
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
+   
+      public function build()
     {
-        return new Envelope(
-            subject: 'Recovery Password',
-        );
+        return $this->view('emails.recovery-password')
+        ->subject('Recuperação de Senha')
+        ->with(['recovery_code' => $this->recovery_code]);          
     }
+        
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
-    }
 }

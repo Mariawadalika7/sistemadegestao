@@ -79,7 +79,7 @@ class SignUpComponent extends Component
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
@@ -89,11 +89,11 @@ class SignUpComponent extends Component
          $this->reset(['fullname' ,'address','birthday', 'phone_number', 'email', 'password']);
          $this->resetValidation();
         } catch (\Throwable $th) {
-            LivewireAlert::title('Erro')
+        LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())
             ->error()
             ->withConfirmButton()
-            ->confirmButtonText('Close')
+            ->confirmButtonText('Fechar')
             ->show();
         }
     }
