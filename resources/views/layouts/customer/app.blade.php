@@ -7,26 +7,26 @@
   <title>@yield('title')</title>
   <!-- General CSS Files -->
   <livewire:styles />
-  <link rel="stylesheet" href="assets/css/app.min.css">
+  <link rel="stylesheet" href="{{ asset('customer/css/app.min.css') }}">
   <!-- Template CSS -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="{{ asset('customer/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('customer/css/components.css') }}">
   <!-- Custom style CSS -->
-  <link rel="stylesheet" href="assets/css/custom.css">
-  <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+  <link rel="stylesheet" href="{{ asset('customer/css/custom.css') }}">
+  <link rel='shortcut icon' type='image/x-icon' href='{{ asset('customer/img/favicon.ico') }}' />
 </head>
 <body>
 {{ $slot }}   
 <livewire:scripts />
 <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
-<script src="assets/js/app.min.js"></script>
+<script src="{{ asset('customer/js/app.min.js') }}"></script>
 <!-- JS Libraies -->
-<script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
+<script src="{{ asset('customer/bundles/apexcharts/apexcharts.min.js') }}"></script>
 <!-- Page Specific JS File -->
-<script src="assets/js/page/index.js"></script>
+<script src="{{ asset('customer/js/page/index.js') }}"></script>
 <!-- Template JS File -->
-<script src="assets/js/scripts.js"></script>
+<script src="{{ asset('customer/js/scripts.js') }}"></script>
 <!-- Custom JS File -->
-<script src="assets/js/custom.js"></script>
+<script src="{{ asset('customer/js/custom.js') }}"></script>
 </body>
 </html>
