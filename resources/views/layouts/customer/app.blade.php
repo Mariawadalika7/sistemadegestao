@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{{ asset('customer/css/components.css') }}">
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="{{ asset('customer/css/custom.css') }}">
-  <link rel='shortcut icon' type='image/x-icon' href='{{ asset('customer/img/favicon.ico') }}' />
+  <link rel='shortcut icon' type='image/x-icon' href='' />
 </head>
 <body>
 {{ $slot }}   
