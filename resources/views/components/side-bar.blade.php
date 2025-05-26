@@ -39,6 +39,13 @@
                                     <span>Serviços da empresa</span> 
                                 </div>
                             </a> 
+
+                             <a class="nav-link {{ request()->route()->getname() == 'dashboard.admin.customer.payments' ? 'rounded text-dark bg-white' : ''}} {{ auth()->user()->role->role_type == 'employee' ? 'd-block' : 'd-none' }}" href="{{ route('dashboard.admin.customer.payments') }}">
+                                <div class="sb-nav-link-icon d-flex gap-2 align-items-center {{ request()->route()->getname() == 'dashboard.admin.customer.payments' ? ' text-dark' : '' }}">
+                                    <i class="fa fa-solid fa-credit-card "></i>
+                                    <span>Pagamentos</span> 
+                                </div>
+                            </a> 
                             
                         </div>
                     </div>

@@ -17,6 +17,7 @@ class Payment extends Model
         'payment_method',
         'payment_report_generated_counter',
         'payment_file',
+        'enterprise_service_uuid ',
         'customer_uuid'
     ];
 }
