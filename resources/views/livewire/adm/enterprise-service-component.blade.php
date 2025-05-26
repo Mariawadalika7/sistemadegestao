@@ -45,6 +45,8 @@
                                                 @foreach ($available_company_services as $service)
                                                             <tr>  
                                                                 <td>{{$service->created_at ?? ''}}</td>     
+                                                                <td>{{ $service->service_name }}</td>
+                                                                <td>{{ number_format($service->service_price, 2, ',', '.') }}</td>
                                                                                                                                
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center justify-content-end'>                                                                   
