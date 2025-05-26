@@ -11,7 +11,7 @@
                     <h1>Recuperar senha!</h1>
                 </div>
 
-            <form wire:submit='recoverPassword'>
+            <form>
 
             <div style='{{is_bool(!$isVerified) ? "display:none !important;" : "" }}' class="form-floating mb-2">
             <input wire:model="verificationCode" type="number" min="1" class="form-control" id="floatingInput" />
@@ -38,7 +38,8 @@
          </div>              
 
          <div>
-                <button                       
+                <button      
+                        wire:click.prevent='recoverPassword()'                
                         class="login-button">
                         Recuperar
                 </button>
@@ -51,6 +52,10 @@
        </div>
 
         </form>
+
+        <div style="text-align: center; margin-top: 10px;">
+          <a href="{{ route('login') }}">Fazer login</a>
+        </div>
         
                
                

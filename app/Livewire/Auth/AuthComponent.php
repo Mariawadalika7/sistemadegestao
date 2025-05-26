@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Auth;
 
-use App\Models\{Employee, PersonalData, Role, User};
+use App\Models\{Employee, Enterprise, PersonalData, Role, User};
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,15 +14,16 @@ use Livewire\Component;
 
 class AuthComponent extends Component
 {
-    #[Layout('layouts.auth.app')]
-
-    public $email,$password,$user,$admin,$role,$credentials,$phone_number,$availableRoles,$employee;
-    protected $rules = ['email' => 'required', 'password' =>'required'];
+     #[Layout('layouts.home.app')] 
+    public $email,$password,$user,$admin,$role,$credentials = [],$phone_number,$availableRoles,$employee,$enterprise_tb;
+    protected $rules = ['email' =>'required','password' =>'required'];
     protected $messages = ['email.required' => 'Campo obritório*', 'password.required' =>'Campo obritório*'];
 
-    public function mount () {
+    public function mount (Enterprise $enterprise_tb) {
+        $this->enterprise_tb = $enterprise_tb;
         $this->verifyIfAlreadyHaveOneAdminUser();
         $this->verifyAllAvailableRoles();
+        $this->verifyIfAlreadyHaveEnterpriseData();
     }
 
     public function render()
@@ -30,11 +31,11 @@ class AuthComponent extends Component
         return view('livewire.auth.auth-component');
     }
 
-    public function signIn () {
+    public function sign_in () {       
        $this->validate();
         try {
-
-            if (auth()->attempt(["email" =>$this->email, "password" =>$this->password])) {
+            $this->credentials = ["email" =>$this->email,"password" =>$this->password];
+            if (auth()->attempt($this->credentials)) {
                 if (auth()->user()->role->role_type === 'customer') {
                       // return redirect()->route('customer.home');
                     }else if (auth()->user()->role->role_type === 'admin') {
@@ -118,6 +119,29 @@ class AuthComponent extends Component
         } catch (Exception $ex) {
             DB::rollBack();
             LivewireAlert::title('Erro')
+                ->text('erro: ' .$ex->getMessage())
+                ->error()
+                ->withConfirmButton()
+                ->confirmButtonText('Fechar')
+                ->timer(0)
+                ->show();
+        }
+    }
+
+    public function verifyIfAlreadyHaveEnterpriseData () {
+        try {
+          
+            if ($this->enterprise_tb->count() < 1){
+                $this->enterprise_tb::create([
+                    'enterprise_name' =>"Centro De Electricidade Multiserviço",
+                    'phone_number' =>"+244923567899",
+                    'email' =>"centro.multi-angola@gmail.com",
+                    'address' =>"Luanda, Angola",
+                    'logo'  => null,
+                    ]);
+            }
+        } catch (Exception $ex) {
+             LivewireAlert::title('Erro')
                 ->text('erro: ' .$ex->getMessage())
                 ->error()
                 ->withConfirmButton()

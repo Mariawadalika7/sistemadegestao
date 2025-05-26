@@ -294,7 +294,7 @@ class EmployeeComponent extends Component
             ->confirmButtonText('Confirmar')
             ->warning()
             ->withDenyButton()
-            ->denyButtonText('Cancel')
+            ->denyButtonText('Cancelar')
             ->withOptions(['allowOutsideClick' => false])
             ->timer('30000')
             ->onConfirm('confirmEmployeeDeletion')
@@ -322,6 +322,30 @@ class EmployeeComponent extends Component
         } catch (Exception $ex) {
             DB::rollBack();
             LivewireAlert::title('Erro')
+            ->text('erro: ' .$ex->getMessage())
+            ->error()
+            ->withConfirmButton()
+            ->confirmButtonText('Fechar')
+            ->timer(0)
+            ->show();
+        }
+    }
+
+    public function close_modal () {
+        try {
+            $this->status = false;
+            $this->reset([
+                'fullname',
+                'address',
+                'birthday',
+                'phone_number',
+                'username',
+                'email',
+                'password',
+            ]);
+            $this->resetValidation();
+        } catch (\Throwable $ex) {
+         LivewireAlert::title('Erro')
             ->text('erro: ' .$ex->getMessage())
             ->error()
             ->withConfirmButton()

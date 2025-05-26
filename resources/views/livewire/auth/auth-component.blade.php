@@ -1,56 +1,42 @@
+
 @section('title', 'CentroMulticerviços - Login')
-<div>
-   <div class="login-container">
-                <div class="logo">
-                    <span class="logo-icon">⚡</span>
-                    CentroMultisserviços
-                </div>
-
-                <div>
-                    <h1>Bem-vindo de volta!</h1>
-                    <p class="subtitle">Acesse sua conta para gerenciar o sistema</p>
-                </div>
-
-            <form wire:submit='signIn'>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" wire:model="email"  />
-                    @error('email')<span class='text-danger'>{{$message}}</span>@enderror
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input id="password" type="password" wire:model="password" />
-                    @error('password')<span class='text-danger'>{{$message}}</span>@enderror
-                </div>
-
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-                    <div class="remember-me">
-                        <input id="remember_me" type="checkbox" name="remember">
-                        <label for="remember_me">Lembrar-me</label>
-                    </div>
-                </div>
-
-                <div>
-                    <button                       
-                        class="login-button">
-                        Entrar no Sistema
-                    </button>
-                </div>
-                 
-                   <div id='forgot_password'>
-                        <span>Esqueçeu a sua senha? </span><a href='{{ route('user.recover.password') }}'>clique aqui para recuperar</a>
-                    </div>
-            </form>
+<div class="flex">
+        <nav class="hidden md:block grayscale-100 hover:grayscale-0 ease-linear duration-500">
+            <img src="{{ asset('/home/img/img_formulario.jpg') }}" alt="" srcset="" class="h-screen w-[55vw]">
+        </nav>
+        <nav class="md:w-[50vw] bg-[#151515] flex flex-col items-center p-14 h-max md:h-screen overflow-y-scroll sm:overflow-y-scroll md:overflow-y-scroll navAllContent ">
+            <a href="/" class="flex items-center justify-center"><img src="{{ asset('/home/img/logo.png') }}" alt="" srcset="" class="md:w-[50%] w-[55%]"></a>
+         
+            <nav class="formContainer" id="formLogin">
                
-                <div class="register">
-                  
-                    Não tem uma conta?
-                    <a href="{{ route('user.sign.up') }}">
-                        Cadastre-se
-                    </a>
-                </div>
+                    <div>
+                        <h1 class="font-inter text-3xl font-bold text-white text-center md:text-left">Que bom vê-lo novamente! Pronto para <span class="text-[#e10600] font-bold textoColorido">eletrificar?</span></h1>
+                        <p class="font-roboto text-[#B0B0B0] font-bold text-[10pt] text-center md:text-left">Eletrifique connosco.</p>
+                        <p class="pt-2.5 text-white font-inter font-extralight md:text-left text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos neque modi quidem tempore, ratione odit voluptas nostrum omnis eius provident recusandae necessitatibus nobis veritatis corrupti repellendus aperiam fugit praesentium quia.</p>
+                        <div class="contentNavInputs">
+                            <nav class="navInputs mt-3 md:mt-auto">
+                                <input wire:model='email' type="text" placeholder="" id="emailSessao" >
+                                <label for="emailSessao">E-mail *</label>
+                                @error('email')<span style="color:red;">{{$message}}</span>@enderror
+                            </nav>
+                            <nav class="navInputs">
+                                <input wire:model='password' type="text" placeholder="" id="senhaSessao" >
+                                <label for="senhaSessao">Palavra-Passe *</label>
+                                @error('password')<span  style="color:red;">{{$message}}</span>@enderror
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-center items-center pt-[20%]">
+                        <nav class="navBotoes">
+                            <a href="/"><button type="button" class="botao">Cancelar</button></a>
+                            <button wire:click='sign_in' class="botao botaoPrimario">Iniciar Sessão</button>
+                        </nav>
+                        <nav class="text-center pb-3.5 md:pb-0">
+                            <p class="font-inter pt-[2%] font-medium text-white">Se você ainda não possui uma conta, clique <a href="{{ route('user.sign.up') }}" class="text-[#E10600] hover:underline cursor-pointer mostrarForm1">aqui</a> para registrar-se.</p>
+                            <p class="text-[#B0B0B0] font-inter font-extralight pt-[4%]">&copy;2025 - <span class="textoColorido font-bold">Centro Multisserviços</span> - Todos os direitos reservados</p>
+                        </nav>
+                    </div>
+            </nav>
+        </nav>
     </div>
 
-
-</div>

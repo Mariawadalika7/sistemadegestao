@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header border-0">
-        <h1 class="modal-title fs-6 text-muted text-uppercase" id="staticBackdropLabel">{{ $status ? 'Editar dados do' : 'Adicionar' }} funcionário</h1>
+        <h1 class="modal-title fs-6 text-muted text-uppercase" id="staticBackdropLabel">{{ $status ? 'Editar dados do' : 'Adicionar' }} registo</h1>
         <button wire:click='close_modal' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -16,7 +16,7 @@
                         @error('fullname')<span class='text-danger'>{{$message}}</span>@enderror
                     </div>
 
-                    <div class='form-group'>
+                    <div class='form-group {{ isset($hideInput) ? 'd-none' : '' }}'>
                         <label>Cargo:</label>
                         <input type='text' class='form-control' wire:model='position' />
                           @error('position')<span class='text-danger'>{{$message}}</span>@enderror
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class='col-md-6'>
-                     <div class='form-group'>
+                     <div class='form-group {{ isset($hideInput) ? 'd-none' : '' }}'>
                         <label>Salário:</label>
                         <input  type='number' class='form-control' wire:model='salary' />
                           @error('salary')<span class='text-danger'>{{$message}}</span>@enderror
@@ -88,7 +88,7 @@
         <button 
             wire:click="{{ is_bool($status) ? 'update' : 'save' }}"         
             class="btn text-uppercase {{$status ? 'btn-success' : 'btn-primary'}} ">
-            {{$status ? 'Atualizar' : 'Salvar'}} 
+            {{is_bool($status) ? 'Atualizar' : 'Salvar'}} 
         </button>
 
       </div>

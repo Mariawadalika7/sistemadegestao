@@ -1,11 +1,12 @@
 <div class='row  {{ auth()->user()->role->role_type == 'employee' ? 'd-block' : 'd-none' }}'>
     
-        <div class="card mb-4">
+        <div class="card mb-4">                             
                             <div class="card-header d-flex align-items-start">
                                 <i class="fas fa-table me-1"></i>
                                  <h6>Últimos Clientes Cadastrados</h6>
                             </div>
                             <div class="card-body">
+                                <x-modals.form-employee :status='$status' :hideInput='$hideInput' />
                                 <div class='d-flex col-md-12 align-items-center gap-2'>
 
                                     <div class='col-md-6 d-flex align-items-center gap-1'>
@@ -43,8 +44,8 @@
                                                                  <td>
                                                                     <div class='d-flex gap-1 align-items-center'>
                                                                         <button 
-                                                                            wire:click="edit('')"
-                                                                            data-bs-target='#form-customer' 
+                                                                            wire:click="edit('{{ $customer->uuid }}')"
+                                                                            data-bs-target='#form-employee' 
                                                                             data-bs-toggle='modal'
                                                                             class='btn btn-primary btn-sm'>
                                                                             <i class='fa fa-edit'></i>
@@ -70,5 +71,6 @@
                                     </table>
                                 </div>
                             </div>
+                            
                         </div>
 </div>

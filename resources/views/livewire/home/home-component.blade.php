@@ -18,7 +18,7 @@
         </nav>
         <nav class="hidden md:block">
             <nav class="navBotoes">
-                <a href="{{ route('user.sign.up') }}"><button class="botao botaoSecundario">Cadastrar-se</button></a>
+                <a><button class="botao botaoSecundario">Cadastre-se</button></a>
                 <a href="{{ route('login') }}"><button class="botao botaoPrimario">Começar</button></a>
             </nav>
         </nav>

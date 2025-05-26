@@ -11,7 +11,7 @@ use Throwable;
 class DashboardComponent extends Component
 {
     #[Layout('layouts.admin.app')]
-    public string $customer_role_uuid;
+    public string $customer_role_uuid,$status;
     public int $active_customers_counter;
 
     public function mount(Role $role_tb) {
@@ -42,7 +42,7 @@ class DashboardComponent extends Component
     public function getActiveCustomerCounter () {
         try {            
             return User::query()->where('role_uuid',$this->customer_role_uuid)->count();
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
         LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())
             ->error()
@@ -55,7 +55,7 @@ class DashboardComponent extends Component
     public function getProccededPayments () {
         try {
            return Payment::query()->count();
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
         LivewireAlert::title('Erro')
             ->text('erro: ' .$th->getMessage())
             ->error()

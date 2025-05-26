@@ -15,7 +15,7 @@ use Livewire\Component;
 class SignUpComponent extends Component
 {
     
-   #[Layout('layouts.auth.app')] 
+    #[Layout('layouts.home.app')] 
    public $fullname,$birthday,$phone_number,$email,$address,$password,$password_confirmation,$customer,$customerRole;
    protected $rules = ['fullname' =>'required', 'birthday' =>'required', 'phone_number' =>'required', 'email' =>'required|unique:users', 'address' =>'required', 'password' =>'required', 'password_confirmation' =>'required|same:password'];
    protected $messages = ['fullname.required' =>'Campo obrigatório', 'birthday.required' =>'Campo obrigatório' ,'phone_number.required' =>'Campo obrigatório', 'email.required' =>'Campo obrigatório', 'email.unique' =>'O email já existe', 'address.required' =>'Campo obrigatório', 'password.required' =>'Campo obrigatório', 'password_confirmation.required' =>'Campo obrigatório', 'password_confirmation.same' =>'O campo senha e confirmar devem corresponder'];
@@ -30,7 +30,7 @@ class SignUpComponent extends Component
         return view('livewire.auth.sign-up-component');
     }
 
-    public function sign_up (User $user_tb, Customer $customer_tb, PersonalData $personal_data_tb) {
+    public function sign_up (User $user_tb, Customer $customer_tb, PersonalData $personal_data_tb) {       
         $this->validate();
         DB::begintransaction();
         

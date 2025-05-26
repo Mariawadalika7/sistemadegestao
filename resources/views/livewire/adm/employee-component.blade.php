@@ -5,11 +5,11 @@
 
             <div id="layoutSidenav_content">
                <main>
+                    <x-modals.form-employee :status='$status' />
                     <div class='container-fluid px-4 my-4'>
                          <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                 <span>Funcionários</span>
+                            <div class="card-header ">                             
+                                 <h6 class='text-uppercase'>Funcionários</h6>
                             </div>
                             <div class="card-body">
                                 <div class='d-flex col-md-12 align-items-center gap-2'>
@@ -84,7 +84,7 @@
 
                         
                     </div>
-                    <x-modals.form-employee :status='$status' />
+                   
                </main>
                <x-footer />                
             </div>
