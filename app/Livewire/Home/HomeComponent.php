@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Livewire\Home;
-
+use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 

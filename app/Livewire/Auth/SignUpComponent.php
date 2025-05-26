@@ -63,7 +63,7 @@ class SignUpComponent extends Component
             DB::commit();
 
             LivewireAlert::title('SUCESSO')
-            ->html("<div>A sua conta foi criada com sucesso, <a href='/login'>clique aqui</a> para efectuar o login.</div>")
+            ->html("<div>A sua conta foi criada com sucesso, <a style='text-decoration:underline; color:blue;' href='/utilizador/login'>clique aqui</a> para efectuar o login.</div>")
             ->success()
             ->withConfirmButton()
             ->confirmButtonText('Fechar')

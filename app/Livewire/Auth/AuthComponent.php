@@ -37,7 +37,7 @@ class AuthComponent extends Component
             $this->credentials = ["email" =>$this->email,"password" =>$this->password];
             if (auth()->attempt($this->credentials)) {
                 if (auth()->user()->role->role_type === 'customer') {
-                      // return redirect()->route('customer.home');
+                       return redirect()->route('dashboard.customer.home');
                     }else if (auth()->user()->role->role_type === 'admin') {
                         return redirect()->route('dashboard.admin.home');
                     }else if (auth()->user()->role->role_type === 'employee') {

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ url('/home/css/style.css') }}">
     <title>@yield('title')</title>
     <livewire:styles />
+    <script src='{{ asset('global/js/sweetalert.js') }}'></script> 
     <link rel="shortcut icon" href="{{ url('/home/img/ico.ico') }}" type="image/x-icon">
     <meta name="keywords" content="Centro Multisserviços, centro de serviços elétricos, eletricidade">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
