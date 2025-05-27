@@ -20,7 +20,7 @@
                                 @error('email')<span style="color:red;">{{$message}}</span>@enderror
                             </nav>
                             <nav class="navInputs">
-                                <input wire:model='password' type="text" placeholder="" id="senhaSessao" >
+                                <input wire:model='password' type="password" placeholder="" id="senhaSessao" >
                                 <label for="senhaSessao">Palavra-Passe *</label>
                                 @error('password')<span  style="color:red;">{{$message}}</span>@enderror
                             </nav>
