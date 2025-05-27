@@ -14,7 +14,7 @@ use Livewire\Component;
 
 class AuthComponent extends Component
 {
-     #[Layout('layouts.home.app')] 
+  
     public $email,$password,$user,$admin,$role,$credentials = [],$phone_number,$availableRoles,$employee,$enterprise_tb;
     protected $rules = ['email' =>'required','password' =>'required'];
     protected $messages = ['email.required' => 'Campo obritório*', 'password.required' =>'Campo obritório*'];
@@ -26,21 +26,23 @@ class AuthComponent extends Component
         $this->verifyIfAlreadyHaveEnterpriseData();
     }
 
+    #[Layout('layouts.home.app')] 
     public function render()
     {
         return view('livewire.auth.auth-component');
     }
-
-    public function sign_in () {       
+    
+    public function login () {      
+     
        $this->validate();
         try {
             $this->credentials = ["email" =>$this->email,"password" =>$this->password];
             if (auth()->attempt($this->credentials)) {
-                if (auth()->user()->role->role_type === 'customer') {
+                if (auth()->user()->role->role_type == 'customer') {
                        return redirect()->route('dashboard.customer.home');
-                    }else if (auth()->user()->role->role_type === 'admin') {
+                    }else if (auth()->user()->role->role_type == 'admin') {
                         return redirect()->route('dashboard.admin.home');
-                    }else if (auth()->user()->role->role_type === 'employee') {
+                    }else if (auth()->user()->role->role_type == 'employee') {
                         return redirect()->route('dashboard.admin.home');
                 }
             }else{

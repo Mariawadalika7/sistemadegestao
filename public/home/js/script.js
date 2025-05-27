@@ -1,7 +1,7 @@
 var menuHamburguer = document.querySelector(".menuHamburguer")
 menuHamburguer.addEventListener("click", ()=> {
     document.querySelector("header").classList.toggle("ativado")
-})
+});
 
 const links = document.querySelectorAll('.linksMenu');
 links.forEach(link => {

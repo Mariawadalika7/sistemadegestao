@@ -232,7 +232,7 @@ class EmployeeComponent extends Component
         try {
           $role = Role::query()->where('role_type', 'employee')->first();
           
-          if ($this->birthday >= now()->format('Y')) {
+          if ($this->birthday >= now()->year) {
             LivewireAlert::title('ATENÇÃO')
                 ->text('A data de nascimento não deve ser igual ou superior a data atual!')
                 ->warning()

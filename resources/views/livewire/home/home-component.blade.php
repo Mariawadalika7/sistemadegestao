@@ -1,5 +1,5 @@
-@section('title' ,'Multiserviços | A energia do futuro, hoje.')
 <div> 
+    @section('title' ,'Multiserviços | A energia do futuro, hoje.')
      <header class="flex md:px-17 justify-between bg-[#151515b7] items-center md:w-[98%] h-[4rem] md:rounded-full md:m-[1rem] fixed backdrop-blur-xs md:border-2 md:border-[#2E2C2C] md:shadow-[#2E2C2C] w-full px-8 z-[1000]">
         <nav class="navMobile">
             <a href="#" target="_top" class="linksMenu">Página Inicial</a>
