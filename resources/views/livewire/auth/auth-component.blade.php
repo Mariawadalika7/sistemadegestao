@@ -29,7 +29,7 @@
                     <div class="flex flex-col justify-center items-center pt-[20%]">
                         <nav class="navBotoes">
                             <a href="/"><button type="button" class="botao">Cancelar</button></a>
-                            <button wire:click='sign_in' class="botao botaoPrimario">Iniciar Sessão</button>
+                            <button wire:click.prevent='sign_in' class="botao botaoPrimario">Iniciar Sessão</button>
                         </nav>
                         <nav class="text-center pb-3.5 md:pb-0">
                             <p class="font-inter pt-[2%] font-medium text-white">Se você ainda não possui uma conta, clique <a href="{{ route('user.sign.up') }}" class="text-[#E10600] hover:underline cursor-pointer mostrarForm1">aqui</a> para registrar-se.</p>
